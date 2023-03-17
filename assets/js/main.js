@@ -1,5 +1,3 @@
-"use strict";
-
 const containerElement = document.querySelector(".container");
 
 let cellsNumber = 49;
@@ -31,15 +29,16 @@ playButton.addEventListener("click", function () {
     cellElement.innerHTML = i;
     containerElement.insertAdjacentElement("beforeend", cellElement);
   }
-})
+  
+  const insertedCells = document.querySelectorAll(".cell");
 
-const insertedCells = document.querySelectorAll(".cell");
+  for (let i = 0; i < insertedCells.length; i++) {
+    const currentCell = insertedCells[i];
+    currentCell.addEventListener("click", function() {
+      this.classList.add("selected");
+      console.log(Number(this.innerText));
+    });
+  }
 
-for (let i = 0; i < insertedCells.length; i++) {
-  const currentCell = insertedCells[i];
-  currentCell.addEventListener("click", function() {
-    this.classList.add("selected");
-    console.log(Number(this.innerText));
-  });
-}
+});
 
