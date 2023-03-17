@@ -35,7 +35,7 @@ playButton.addEventListener("click", function() {
 
   // LISTENS FOR CLICK ON CELLS TO CHANGE THEIR BACKGROUND COLOR
   listenForSelection(insertedCells);
-})
+});
 
 // <---------- FUNCTIONS ---------->
 
