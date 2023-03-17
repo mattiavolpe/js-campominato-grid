@@ -21,9 +21,6 @@ const levelSelectorElement = document.querySelector("#level");
 // SELECT THE PLAY BUTTON FROM THE DOM
 const playButton = document.querySelector("#game_options > button");
 
-// SET THE DEFAULT CELLS NUMBER IF NO SELECTION IS MADE
-let cellsNumber = 100;
-
 // STARTS A NEW GAME WHEN A CLICK ON THE PLAY BUTTON OCCURS
 playButton.addEventListener("click", function() {
 
@@ -70,7 +67,7 @@ function createNewGrid(totalCells, container) {
   for (let i = 1; i <= totalCells; i++) {
     const cellElement = document.createElement("div");
     cellElement.classList.add("cell");
-    
+
     // SETS THE DIMENSIONS DINAMICALLY TO MAKE THE GRID RESPONSIVE ALSO
     cellElement.style.height = `min(calc(100% / ${cellsPerRow}), (96vw / ${cellsPerRow}))`;
     cellElement.innerHTML = i;
