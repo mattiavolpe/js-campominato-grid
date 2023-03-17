@@ -12,5 +12,6 @@ for (let i = 0; i < insertedCells.length; i++) {
   currentCell = insertedCells[i];
   currentCell.addEventListener("click", function() {
     this.classList.add("selected");
+    console.log(Number(this.innerText));
   });
 }

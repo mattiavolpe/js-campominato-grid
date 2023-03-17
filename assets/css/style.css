@@ -23,8 +23,12 @@ img {
 .container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   width: 96%;
   max-width: 1320px;
+  height: 100%;
   margin: auto;
   padding: 1rem 0;
 }
@@ -33,7 +37,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10%;
+  height: min(calc(100% / 10), (96vw / 10));
   aspect-ratio: 1 / 1;
   border: 1px solid black;
 }
@@ -70,6 +74,7 @@ img {
 #game_name > span {
   font-size: 2.5rem;
   font-weight: 700;
+  text-align: center;
 }
 
 #game_name,
@@ -90,6 +95,7 @@ img {
   height: 30px;
   border: 1px solid black;
   border-radius: 5px;
+  padding: 0 1rem;
   cursor: pointer;
 }
 
@@ -97,7 +103,6 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1rem;
 }
 
 /* #endregion #app_header */
@@ -105,15 +110,39 @@ img {
 /* #region #app_main */
 
 #app_main {
+  /* HEIGHTS TO SUBTRACT: #app_header and #app_footer */
+  height: calc(100vh - 150px - 30px);
+  height: calc(100svh - 150px - 30px);
   background-color: aquamarine;
 }
 
 /* #endregion #app_main */
 
+/* #region #app_footer */
+
+#app_footer {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #endregion #app_footer */
+
 
 /* #region Media Queries */
 
-@media screen and (min-width: 634px) {
+@media screen and (min-width: 571px) {
+
+  .container {
+    width: unset;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+}
+
+@media screen and (min-width: 656px) {
 
   #app_header {
     height: 80px;
@@ -123,6 +152,17 @@ img {
   #game_options {
     flex-grow: 0;
   }
+
+  #app_main {
+    height: calc(100vh - 80px - 30px);
+    height: calc(100svh - 80px - 30px);
+  }
+
+  .container {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
 }
 
-/* #endregion Media Queries */
+/* #endregion Media Queries
