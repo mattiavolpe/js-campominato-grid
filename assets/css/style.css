@@ -39,6 +39,7 @@ img {
   align-items: center;
   aspect-ratio: 1 / 1;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .selected {

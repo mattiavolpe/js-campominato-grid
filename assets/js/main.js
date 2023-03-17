@@ -12,47 +12,81 @@ con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 
 con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
 */
 
+// SELECT THE CONTAINER FROM THE DOM
 const containerElement = document.querySelector(".container");
 
-let cellsNumber = 100;
-
+// SELECT THE LEVEL SELECTOR FROM THE DOM
 const levelSelectorElement = document.querySelector("#level");
 
+// SELECT THE PLAY BUTTON FROM THE DOM
 const playButton = document.querySelector("#game_options > button");
 
-levelSelectorElement.addEventListener("change", function() {
-  switch (this.value) {
+// SET THE DEFAULT CELLS NUMBER IF NO SELECTION IS MADE
+let cellsNumber = 100;
+
+// STARTS A NEW GAME WHEN A CLICK ON THE PLAY BUTTON OCCURS
+playButton.addEventListener("click", function() {
+
+  // GETS THE NUMBER OF CELLS
+  const cellsNumber = setCellsNumber(levelSelectorElement);
+
+  // CREATES THE GRID
+  createNewGrid(cellsNumber, containerElement);
+
+  // GETS THE INSERTED CELLS
+  const insertedCells = document.querySelectorAll(".cell");
+
+  // LISTENS FOR CLICK ON CELLS TO CHANGE THEIR BACKGROUND COLOR
+  listenForSelection(insertedCells);
+})
+
+// <---------- FUNCTIONS ---------->
+
+// FUNCTION TO EXTRACT THE NUMBER OF CELLS NEEDED
+function setCellsNumber(selectorElement) {
+  switch (selectorElement.value) {
     case "medium":
-      cellsNumber = 81;
+      cells = 81;
       break;
     case "easy":
-      cellsNumber = 49;
+      cells = 49;
       break;
     default:
-      cellsNumber = 100;
+      cells = 100;
   }
-});
+  return cells;
+}
 
-playButton.addEventListener("click", function () {
-  containerElement.innerHTML = "";
-  const cellsPerRow = Math.sqrt(cellsNumber);
-  for (let i = 1; i <= cellsNumber; i++) {
+// FUNCTION TO EMPTY THE CONTAINER AND CREATE THE GRID OF CELLS
+function createNewGrid(totalCells, container) {
+  
+  // EMPTY THE CONTAINER
+  container.innerHTML = "";
+
+  // CALCULATE HOW MANY CELLS PER ROW
+  const cellsPerRow = Math.sqrt(totalCells);
+
+  // CREATES CELLS, ADD THE CELL CLASS, SET THE DIMENSION, INSERT THE INDEX NUMBER AND ADDS TO THE DOM
+  for (let i = 1; i <= totalCells; i++) {
     const cellElement = document.createElement("div");
     cellElement.classList.add("cell");
+    
+    // SETS THE DIMENSIONS DINAMICALLY TO MAKE THE GRID RESPONSIVE ALSO
     cellElement.style.height = `min(calc(100% / ${cellsPerRow}), (96vw / ${cellsPerRow}))`;
     cellElement.innerHTML = i;
     containerElement.insertAdjacentElement("beforeend", cellElement);
   }
-  
-  const insertedCells = document.querySelectorAll(".cell");
+}
 
-  for (let i = 0; i < insertedCells.length; i++) {
-    const currentCell = insertedCells[i];
+// FUNCTION TO CHANGE THE BACKGROUND OF A CELL WHEN CLICKED
+function listenForSelection(cellsInTheGrid) {
+
+  // ADDS A "CLICK" EVENT LISTENER TO EVERY CELL IN THE GRID
+  for (let i = 0; i < cellsInTheGrid.length; i++) {
+    const currentCell = cellsInTheGrid[i];
     currentCell.addEventListener("click", function() {
       this.classList.add("selected");
       console.log(Number(this.innerText));
     });
   }
-
-});
-
+}
