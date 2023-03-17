@@ -36,9 +36,11 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.75rem;
+  height: 150px;
 }
 
-#game_name {
+#game_name,
+#game_options {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +48,7 @@ img {
 }
 
 #game_name > .logo {
-  height: 90px;
+  height: 80px;
 }
 
 #game_name > span {
@@ -54,4 +56,48 @@ img {
   font-weight: 700;
 }
 
-/* #endregion #app_heade */
+#game_name,
+#game_options {
+  flex-grow: 1;
+}
+
+#game_options label {
+  font-size: 1.25rem;
+}
+
+#game_options .level_selector {
+  margin: 0 0.75rem;
+}
+
+#level,
+#game_options button {
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#game_options button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* #endregion #app_header */
+
+/* #region Media Queries */
+
+@media screen and (min-width: 634px) {
+
+  #app_header {
+    height: 80px;
+  }
+
+  #game_name,
+  #game_options {
+    flex-grow: 0;
+  }
+}
+
+/* #endregion Media Queries */
