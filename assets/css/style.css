@@ -21,9 +21,25 @@ img {
 /* #region Utility */
 
 .container {
+  display: flex;
+  flex-wrap: wrap;
   width: 96%;
   max-width: 1320px;
   margin: auto;
+  padding: 1rem 0;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid black;
+}
+
+.selected {
+  background-color: aqua;
 }
 
 /* #endregion Utility */
@@ -85,6 +101,15 @@ img {
 }
 
 /* #endregion #app_header */
+
+/* #region #app_main */
+
+#app_main {
+  background-color: aquamarine;
+}
+
+/* #endregion #app_main */
+
 
 /* #region Media Queries */
 
