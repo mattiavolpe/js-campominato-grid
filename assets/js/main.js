@@ -41,6 +41,7 @@ playButton.addEventListener("click", function() {
 
 // FUNCTION TO EXTRACT THE NUMBER OF CELLS NEEDED
 function setCellsNumber(selectorElement) {
+  let cells = 100;
   switch (selectorElement.value) {
     case "medium":
       cells = 81;
@@ -48,8 +49,6 @@ function setCellsNumber(selectorElement) {
     case "easy":
       cells = 49;
       break;
-    default:
-      cells = 100;
   }
   return cells;
 }
